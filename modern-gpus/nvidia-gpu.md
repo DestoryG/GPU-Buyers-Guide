@@ -294,7 +294,9 @@ NVIDIA Turing and newer GPUs are not natively supported by macOS. However, the c
 
 The project uses NVIDIA's open GPU kernel modules alongside a custom Metal driver and a Mesa NVK-based Vulkan backend. It aims to provide Metal acceleration and support for other graphics APIs.
 
-**This is not native GPU support, and not all features are functional.** Consult the project's documentation and release notes for the latest compatibility information before attempting installation, we do not recommend purchasing them for use with macOS.
+**This is not native GPU support, and not all features are functional.** Consult the project's documentation and release notes for the latest compatibility information before attempting installation.
+
+Once Again, we do not recommend purchasing them for use with macOS.
 
 
 
