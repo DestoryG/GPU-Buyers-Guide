@@ -2,7 +2,9 @@
 
 :::warning
 
-There are no currently supported NVIDIA GPUs.
+NVIDIA GPUs are not natively supported by modern versions of macOS. However, a community-developed driver, [NullMoth NVIDIA Driver](https://github.com/nullmoth/nvidia-macos-driver), provides experimental support for newer NVIDIA GPUs on macOS.
+
+This driver is not an official Apple or NVIDIA driver. It is still under active development, and functionality, stability, and application compatibility vary. We do not recommend purchasing an NVIDIA GPU specifically for use with macOS.
 
 :::
 
@@ -283,6 +285,46 @@ Needed kexts:
 * [NVIDIA's Web Drivers](https://images.nvidia.com/mac/pkg/387/WebDriver-387.10.10.10.40.140.pkg)
 * [Lilu.kext](https://github.com/acidanthera/Lilu/releases)
 * [WhateverGreen.kext](https://github.com/acidanthera/WhateverGreen/releases)
+
+## Non-Native NVIDIA GPUs
+
+### Turing and newer (GTX 16xx, RTX 20xx/30xx/40xx/50xx)
+
+NVIDIA Turing and newer GPUs are not natively supported by macOS. However, the community-developed [NullMoth NVIDIA Driver](https://github.com/nullmoth/nvidia-macos-driver) implements a custom graphics driver stack that enables GPU acceleration on compatible Intel Macs and Hackintosh systems running macOS.
+
+The project uses NVIDIA's open GPU kernel modules alongside a custom Metal driver and a Mesa NVK-based Vulkan backend. It aims to provide Metal acceleration and support for other graphics APIs.
+
+**This is not native GPU support, and not all features are functional.** Consult the project's documentation and release notes for the latest compatibility information before attempting installation, we do not recommend purchasing them for use with macOS.
+
+
+
+Supported GPU families include:
+
+- GeForce GTX 16xx series (Turing)
+- GeForce RTX 20xx series (Turing)
+- GeForce RTX 30xx series (Ampere)
+- GeForce RTX 40xx series (Ada Lovelace)
+- GeForce RTX 50xx series (Blackwell)
+- TITAN RTX
+- Selected NVIDIA Quadro RTX and T-series workstation GPUs
+
+The GPU list above describes the project's supported device families, not a guarantee that every individual card has been tested. Refer to the project's [card support documentation](https://github.com/nullmoth/nvidia-macos-driver) for the latest device-specific status.
+
+::: warning
+
+The driver is experimental and should not be considered a drop-in replacement for a natively supported AMD GPU.
+
+Known limitations include, but are not limited to:
+
+- **FairPlay DRM and protected media:** Compatibility with DRM-protected streaming services has not been established. Protected playback may fail even when ordinary video playback works.
+- **Hardware video encoding and decoding:** Do not assume that NVENC, NVDEC, or their integration with macOS VideoToolbox is fully supported. Codec acceleration and application compatibility remain limited and may vary by workload.
+- **Application compatibility:** Some games, browsers, and graphics applications may exhibit rendering errors, reduced performance, or other issues.
+- **Display output:** HDMI/DisplayPort audio, certain external GPU configurations, and some laptop internal displays may not work correctly.
+- **Stability:** Some hardware configurations may experience boot failures, display corruption, or other driver-related issues.
+
+Check the project's [known issues and troubleshooting documentation](https://github.com/nullmoth/nvidia-macos-driver) before installing the driver. Back up your OpenCore configuration and ensure that you can boot without the NVIDIA driver before making changes.
+
+:::
 
 Extras:
 
